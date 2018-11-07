@@ -11,10 +11,7 @@ describe('alerting service', async () => {
     const myKibana = { Plugin: () => ({}) };
     const mock = sinon.mock(myKibana);
 
-    mock
-      .expects('Plugin')
-      .once()
-      .throws();
+    mock.expects('Plugin').once();
     expect(typeof alerting).toEqual('function');
     const alertingInstance = alerting(myKibana);
 
