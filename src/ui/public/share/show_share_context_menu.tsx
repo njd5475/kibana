@@ -25,7 +25,7 @@ import { ShareActionProvider } from './share_action';
 
 import { EuiWrappingPopover } from '@elastic/eui';
 
-import { I18nProvider } from '@kbn/i18n/react';
+import { I18nContext } from 'ui/i18n';
 
 let isOpen = false;
 
@@ -66,9 +66,8 @@ export function showShareContextMenu({
 
   document.body.appendChild(container);
   const element = (
-    <I18nProvider>
+    <I18nContext>
       <EuiWrappingPopover
-        className="navbar__popover"
         id="sharePopover"
         button={anchorElement}
         isOpen={true}
@@ -87,7 +86,7 @@ export function showShareContextMenu({
           onClose={onClose}
         />
       </EuiWrappingPopover>
-    </I18nProvider>
+    </I18nContext>
   );
   ReactDOM.render(element, container);
 }

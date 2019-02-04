@@ -7,6 +7,7 @@
   z-index: 0;
   background-color: $euiColorPrimary;
   overflow: hidden;
+  z-index: 5;
 
   &.kbnGlobalNav-isOpen {
     width: $kbnGlobalNavOpenWidth;
@@ -21,6 +22,13 @@
     height: $kbnGlobalNavLogoHeight;
     width: $kbnGlobalNavOpenWidth;
     list-style-type: none;
+
+    &.kibana {
+      background-image: url('ui/assets/images/kibana.svg');
+      background-position: 10px 14px;
+      background-size: 120px 42px;
+      background-repeat: no-repeat;
+    }
   }
 }
 
@@ -45,7 +53,7 @@
   }
 
   &::-webkit-scrollbar-thumb { /* 4 */
-    background-color: tint($kbnChromeGlobalNavBackground, 50%);
+    background-color: tint($euiColorPrimary, 50%);
   }
 }
 
@@ -60,11 +68,8 @@
 .kbnGlobalNav__logoLink {
   display: inline-block;
 
-  &:hover {
-    background-color: darken($euiColorPrimary, 15%);
-  }
-
+  &:hover,
   &.active {
-    background-color: $euiColorPrimary;
+    background-color: darken($euiColorPrimary, 2%);
   }
 }

@@ -5,6 +5,7 @@
  */
 
 import { EuiFlexGroup, EuiFlexItem, EuiSpacer, EuiTitle } from '@elastic/eui';
+import { i18n } from '@kbn/i18n';
 import React from 'react';
 import {
   HistoryTabs,
@@ -12,19 +13,23 @@ import {
 } from 'x-pack/plugins/apm/public/components/shared/HistoryTabs';
 // @ts-ignore
 import { KueryBar } from '../../shared/KueryBar';
-import { SetupInstructionsLink } from '../../shared/SetupInstructionsLink';
+import { SetupInstructionsLink } from '../../shared/Links/SetupInstructionsLink';
 import { ServiceOverview } from '../ServiceOverview';
 import { TraceOverview } from '../TraceOverview';
 
 const homeTabs: IHistoryTab[] = [
   {
     path: '/services',
-    name: 'Services',
+    name: i18n.translate('xpack.apm.home.servicesTabLabel', {
+      defaultMessage: 'Services'
+    }),
     render: props => <ServiceOverview {...props} />
   },
   {
     path: '/traces',
-    name: 'Traces',
+    name: i18n.translate('xpack.apm.home.tracesTabLabel', {
+      defaultMessage: 'Traces'
+    }),
     render: props => <TraceOverview {...props} />
   }
 ];
