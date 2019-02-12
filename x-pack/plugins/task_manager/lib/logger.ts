@@ -13,13 +13,16 @@ export interface Logger {
   warning: SimpleLogFn;
   debug: SimpleLogFn;
   info: SimpleLogFn;
+  derive(...tags: string[]): Logger;
 }
 
 export class TaskManagerLogger implements Logger {
   private write: LogFn;
+  private readonly tags: string[];
 
-  constructor(log: LogFn) {
+  constructor(log: LogFn, tags: string[] = ['task_manager']) {
     this.write = log;
+    this.tags = tags;
   }
 
   public error(msg: string) {
@@ -38,7 +41,11 @@ export class TaskManagerLogger implements Logger {
     this.log('info', msg);
   }
 
+  public derive(...tags: string[]): Logger {
+    return new TaskManagerLogger(this.write, [...this.tags, ...tags]);
+  }
+
   private log(type: string, msg: string) {
-    this.write([type, 'task_manager'], msg);
+    this.write([type, ...this.tags], msg);
   }
 }

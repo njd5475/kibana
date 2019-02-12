@@ -43,7 +43,7 @@ export class TaskPoller {
    */
   constructor(opts: Opts) {
     this.pollInterval = opts.pollInterval;
-    this.logger = opts.logger;
+    this.logger = opts.logger.derive('task_poller');
     this.store = opts.store;
     this.work = opts.work;
   }

@@ -80,7 +80,7 @@ export class TaskManagerRunner implements TaskRunner {
   constructor(opts: Opts) {
     this.instance = sanitizeInstance(opts.instance);
     this.definitions = opts.definitions;
-    this.logger = opts.logger;
+    this.logger = opts.logger.derive('task_runner');
     this.store = opts.store;
     this.kbnServer = opts.kbnServer;
     this.beforeRun = opts.beforeRun;

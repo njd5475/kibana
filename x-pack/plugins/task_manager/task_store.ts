@@ -98,7 +98,7 @@ export class TaskStore {
     this.index = opts.index;
     this.maxAttempts = opts.maxAttempts;
     this.supportedTypes = opts.supportedTypes;
-    this.logger = opts.logger;
+    this.logger = opts.logger.derive('task_store');
     this.getKibanaUuid = opts.getKibanaUuid;
 
     this.fetchAvailableTasks = this.fetchAvailableTasks.bind(this);
